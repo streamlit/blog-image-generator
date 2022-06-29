@@ -1,5 +1,7 @@
 import streamlit as st
 import time as time
+import streamlit.components.v1 as components
+
 
 def step3(final_image):
     st.write('''
@@ -8,13 +10,7 @@ def step3(final_image):
 
     st.success('Done! Preview and download your image below')
 
-    # Temporary code...
-
-    # Trying to show the image preview via HTML, but not working for some reason...
-    #st.markdown(final_image, unsafe_allow_html=True)
-
-    # Trying to show using st.image, but that only partially works. Need to debug...
-    st.image(final_image)
+    components.html(final_image, width=1480, height=700)
 
     st.download_button(
       label="Download image",
