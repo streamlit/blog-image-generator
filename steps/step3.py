@@ -7,7 +7,14 @@ def step3(final_image):
     ''')
 
     st.success('Done! Preview and download your image below')
-    st.markdown(final_image, unsafe_allow_html=True)
+
+    # Temporary code...
+
+    # Trying to show the image preview via HTML, but not working for some reason...
+    #st.markdown(final_image, unsafe_allow_html=True)
+
+    # Trying to show using st.image, but that only partially works. Need to debug...
+    st.image(final_image)
 
     st.download_button(
       label="Download image",
