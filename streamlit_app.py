@@ -10,7 +10,6 @@ from steps.step3 import step3
 
 An app to generate good-looking images for [our blog](https://blog.streamlit.io).
 '''
-#st.image('img/cover.png')
 
 '---'
 
