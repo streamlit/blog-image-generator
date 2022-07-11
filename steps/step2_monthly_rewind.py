@@ -17,7 +17,7 @@ def render():
         emoji3 = st.text_input('Emoji 3', value='🍘')
         if emoji3 != '': emojis.append(emoji3)
     with col4:
-        emoji4 = st.text_input('Emoji 4', value='🐍', help="You can add up to 4. Leave them empty if you want to have less than 4!")
+        emoji4 = st.text_input('Emoji 4', value='🐍')
         if emoji4 != '': emojis.append(emoji4)
 
     return [emojis]
@@ -62,6 +62,6 @@ def generate(emojis):
 def verify_arguments(emojis):
     # TODO: Check if the text is actually an emoji
 
-    MIN_EMOJIS = 1
+    MIN_EMOJIS = 4
 
-    assert len(emojis) >= MIN_EMOJIS, "Please add at least one emoji"
+    assert len(emojis) >= MIN_EMOJIS, "Please add four emojis"
