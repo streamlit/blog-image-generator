@@ -1,12 +1,12 @@
 import streamlit as st
-from htbuilder import svg, ellipse
+from .lib.generate_gradient import get_encoded_gradient
 
 def render():
     data = ['', '']
     col1, col2 = st.columns(2)
 
     with col1:
-        emoji = st.text_input('Emoji', placeholder='🚢', help="If you leave it empty, we'll default it to :rocket:")
+        emoji = st.text_input('Emoji', value='🚢', help="If you leave it empty, we'll default it to :rocket:")
         if emoji != '': data[0] = emoji
 
     with col2:
@@ -17,6 +17,8 @@ def render():
 
 def generate(data):
     verify_arguments(data)
+
+    gradient = get_encoded_gradient()
 
     return str(
         svg(view_box=(0, 0, 200, 100), xmlns="http://www.w3.org/2000/svg")(
