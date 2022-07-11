@@ -7,11 +7,11 @@ def render():
 
     with col1:
         emoji = st.text_input('Emoji', placeholder='🚢', help="If you leave it empty, we'll default it to :rocket:")
-        if emoji is not '': data[0] = emoji
+        if emoji != '': data[0] = emoji
 
     with col2:
         version_number = st.text_input('Version number', placeholder='v.1.10.0', help="This text shows up at the bottom-right hand-corner")
-        if version_number is not '': data[1] = version_number
+        if version_number != '': data[1] = version_number
 
     return [data]
 
@@ -33,7 +33,7 @@ def generate(data):
 
 
 def verify_arguments(data):
-    if(data[0]) is '': data[0] = '🚀'
+    if(data[0]) == '': data[0] = '🚀'
 
-    assert data[0] is not '', "Please add an emoji"
-    assert data[1] is not '', "Please add the version number"
+    assert data[0] != '', "Please add an emoji"
+    assert data[1] != '', "Please add the version number"

@@ -10,7 +10,7 @@ def step3(final_image):
 
     st.success('Done! Preview and download your image below')
 
-    components.html(final_image, width=1480, height=700)
+    components.html(final_image, height=340)
 
     st.download_button(
       label="Download image",

@@ -24,4 +24,4 @@ def generate(image):
 
 
 def verify_arguments(image):
-    assert image is not None, "Please choose an image above"
+    assert image != None, "Please choose an image above"

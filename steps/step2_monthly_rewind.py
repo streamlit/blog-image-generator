@@ -8,16 +8,16 @@ def render():
     # TODO: Render columns conditionally
     with col1:
         emoji1 = st.text_input('Emoji 1', value='👻')
-        if emoji1 is not '': emojis.append(emoji1)
+        if emoji1 != '': emojis.append(emoji1)
     with col2:
         emoji2 = st.text_input('Emoji 2', value='🤖')
-        if emoji2 is not '': emojis.append(emoji2)
+        if emoji2 != '': emojis.append(emoji2)
     with col3:
         emoji3 = st.text_input('Emoji 3', value='🍘')
-        if emoji3 is not '': emojis.append(emoji3)
+        if emoji3 != '': emojis.append(emoji3)
     with col4:
         emoji4 = st.text_input('Emoji 4', value='🐍', help="You can add up to 4. Leave them empty if you want to have less than 4!")
-        if emoji4 is not '': emojis.append(emoji4)
+        if emoji4 != '': emojis.append(emoji4)
 
     return [emojis]
 
@@ -26,8 +26,8 @@ def generate(emojis):
     verify_arguments(emojis)
 
     return f"""
-        <svg width="1480" height="700" viewBox="0 0 1480 700" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <rect width="1480" height="700" fill="url(#pattern0)"/>
+        <svg viewBox="0 0 1480 700" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <rect width="100%" height="100%" fill="url(#pattern0)"/>
             <text fill="black" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="128" font-weight="600" letter-spacing="0.01em"><tspan x="484.5" y="396.545">{emojis[0]}</tspan></text>
             <text fill="black" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="128" font-weight="600" letter-spacing="0.01em"><tspan x="625.5" y="396.545">{emojis[1]}</tspan></text>
             <text fill="black" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="128" font-weight="600" letter-spacing="0.01em"><tspan x="758.5" y="396.545">{emojis[2]}</tspan></text>
