@@ -1,5 +1,5 @@
 import streamlit as st
-from .lib.generate_gradient import get_encoded_gradient
+from .lib.generate_images import generate_gradient
 
 def render():
     col1, col2, col3, col4 = st.columns(4)
@@ -47,7 +47,7 @@ def generate(emojis):
 
             <defs>
                 <pattern id="gradient" patternContentUnits="objectBoundingBox" width="1" height="1">
-                <use xlink:href="#gradient-image" transform="scale(0.000337838 0.000714286)"/>
+                    <use xlink:href="#gradient-image" transform="scale(0.000337838 0.000714286)"/>
                 </pattern>
                 <image id="gradient-image" width="2960" height="1400" xlink:href="data:image/jpeg;charset=utf-8;base64,{gradient}" />
             </defs>

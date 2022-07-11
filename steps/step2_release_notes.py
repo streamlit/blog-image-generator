@@ -1,5 +1,5 @@
 import streamlit as st
-from .lib.generate_gradient import get_encoded_gradient
+from .lib.generate_images import generate_gradient
 
 def render():
     emoji = st.text_input('Emoji', value='🚢', help="If you leave it empty, we'll default it to :rocket:")
