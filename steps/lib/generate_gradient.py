@@ -4,7 +4,7 @@ import random
 
 def get_encoded_gradient():
   # Get a random number for the gradient
-  x = random.randint(0,100)
+  x = random.randint(0,335)
 
   # Base64 encoding for gradient
   with open(f'img/gradients/{x}.jpg', "rb") as img_file:
