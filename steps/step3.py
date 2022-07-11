@@ -8,7 +8,7 @@ def step3(final_image):
     ## Step 3: Download
     ''')
 
-    st.success('Done! Preview and download your image below')
+    st.success('Done! Preview and download your image below. Don\'t like the gradient? Hit "Generate" again!')
 
     components.html(final_image, height=340)
 

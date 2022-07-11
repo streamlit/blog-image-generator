@@ -14,8 +14,6 @@ STEPS = {
 def step2(selected_template):
     st.write('''
     ## Step 2: Add your assets!
-
-    Add the images required for this template to work as expected
     ''')
 
     # Show an error message if no template was selected
