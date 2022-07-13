@@ -8,10 +8,10 @@ def render():
 def generate(emoji):
     verify_arguments(emoji)
 
-    gradient = get_encoded_gradient()
+    gradient = generate_gradient()
 
     return f"""
-        <svg viewBox="0 0 1480 700" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <svg viewBox="0 0 1480 700" width="100%" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             # Gradient Background
             <rect width="100%" height="100%" fill="url(#gradient)"/>
 

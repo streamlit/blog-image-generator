@@ -26,10 +26,10 @@ def render():
 def generate(emojis):
     verify_arguments(emojis)
 
-    gradient = get_encoded_gradient()
+    gradient = generate_gradient()
 
     return f"""
-        <svg viewBox="0 0 1480 700" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <svg width="100%" viewBox="0 0 1480 700" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             # Gradient Background
             <rect width="100%" height="100%" fill="url(#gradient)"/>
 
