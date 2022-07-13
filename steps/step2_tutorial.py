@@ -71,8 +71,8 @@ def generate(images):
                 # Gradient
                 <image id="gradient-image" width="2960" height="1400" xlink:href="data:image/jpeg;charset=utf-8;base64,{gradient}" />
                 # Screenshots
-                <image id="screenshot-1" width="1728" height="1078" xlink:href="data:image/jpeg;charset=utf-8;base64,{image1}" />
-                <image id="screenshot-2" width="1728" height="1078" xlink:href="data:image/jpeg;charset=utf-8;base64,{image2}" />
+                <image id="screenshot-1" width="1063" height="588" xlink:href="data:image/jpeg;charset=utf-8;base64,{image1}" />
+                <image id="screenshot-2" width="1063" height="588" xlink:href="data:image/jpeg;charset=utf-8;base64,{image2}" />
             </defs>
         </svg>
     """.strip()
