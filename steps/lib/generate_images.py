@@ -1,6 +1,8 @@
 import streamlit as st
 import base64
 import random
+from PIL import Image
+import io
 
 def generate_gradient():
 
@@ -36,8 +38,22 @@ def generate_gradient():
 
   return outstr
 
+def resize_image(image, w, h):
+  img_data = image.read()
+  im = Image.open(io.BytesIO(img_data))
+  if im.mode in ("RGBA", "P"):
+    im = im.convert("RGB")
+  
+  im = im.resize((w, h))
+
+  # Store the new image as a JPG
+  buffered = io.BytesIO()
+  im.save(buffered, 'jpeg', quality=80)
+
+  return buffered
+
 def generate_image(image):
-  image_string = base64.standard_b64encode(image.read())
+  image_string = base64.standard_b64encode(image)
   decoded = image_string.decode('utf-8')
   
   return decoded

@@ -1,5 +1,5 @@
 import streamlit as st
-from .lib.generate_images import generate_gradient, generate_image
+from .lib.generate_images import generate_gradient, generate_image, resize_image
 
 def render():
     images = st.file_uploader("Choose images", help="Recommended size for each image: 610x350 pixels", accept_multiple_files=True)
@@ -10,8 +10,10 @@ def generate(images):
     verify_arguments(images)
 
     gradient = generate_gradient()
-    image1 = generate_image(images[0])
-    image2 = generate_image(images[1])
+    buffered_image1 = resize_image(images[0], 1063, 590)
+    buffered_image2 = resize_image(images[1], 1063, 590)
+    image1 = generate_image(buffered_image1.getvalue())
+    image2 = generate_image(buffered_image2.getvalue())
 
     return f"""
         <svg width="100%" viewBox="0 0 1480 700" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -36,9 +38,6 @@ def generate(images):
             </g>
 
             <defs>
-                <pattern id="gradient" patternContentUnits="objectBoundingBox" width="1" height="1">
-                    <use xlink:href="#gradient-image" transform="translate(-0.0605606 -0.075) scale(0.000437938 0.000925926)"/>
-                </pattern>
                 <filter id="filter0_d_306_419" x="207" y="205" width="804" height="602" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
                     <feFlood flood-opacity="0" result="BackgroundImageFix"/>
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>

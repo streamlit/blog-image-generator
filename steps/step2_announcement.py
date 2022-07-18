@@ -1,5 +1,5 @@
 import streamlit as st
-from .lib.generate_images import generate_gradient, generate_image
+from .lib.generate_images import generate_gradient, generate_image, resize_image
 
 def render():
     image = st.file_uploader("Choose an image", help="Recommended size: 1290x520 pixels")
@@ -9,22 +9,28 @@ def render():
 def generate(image):
     verify_arguments(image)
 
+    # Generate gradient
     gradient = generate_gradient()
-    image = generate_image(image)
+
+    # Get image byte data, resize and generate the base64 encoded version
+    buffered = resize_image(image, 1290, 520)
+    image = generate_image(buffered.getvalue())
 
     return f"""
         <svg width="100%" viewBox="0 0 1480 700" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <g clip-path="url(#clip0_173_52)">
                 <rect width="1480" height="700" fill="url(#gradient)"/>
                 <g filter="url(#filter0_d_173_52)">
-                    <g opacity="0.98" filter="url(#filter1_d_173_52)" transform="translate(0, 48)">
+                    <g opacity="0.98" filter="url(#filter1_d_173_52)" transform="translate(0, 24)">
                         <path d="M64 76C64 69.3726 69.3726 64 76 64H1404C1410.63 64 1416 69.3726 1416 76V700H64V76Z" fill="white"/>
                     </g>
                     <path d="M96 188C96 183.582 99.5817 180 104 180H1376C1380.42 180 1384 183.582 1384 188V700H96V188Z" fill="url(#pattern1)"/>
                     # Browser circles
-                    <circle cx="106" cy="170" r="10" fill="#FF6C6C"/>
-                    <circle cx="146.8" cy="170" r="10" fill="#FFE312"/>
-                    <circle cx="187.6" cy="170" r="10" fill="#3DD56D"/>
+                    <g transform="translate(0, -32)">
+                        <circle cx="106" cy="170" r="10" fill="#FF6C6C"/>
+                        <circle cx="146.8" cy="170" r="10" fill="#FFE312"/>
+                        <circle cx="187.6" cy="170" r="10" fill="#3DD56D"/>
+                    </g>
                 </g>
             </g>
             
@@ -51,7 +57,7 @@ def generate(image):
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_173_52" result="shape"/>
                 </filter>
                 <pattern id="pattern1" patternContentUnits="objectBoundingBox" width="1" height="1">
-                    <use xlink:href="#screenshot" transform="translate(0 -0.117611) scale(0.000578704 0.0014334)"/>
+                    <use xlink:href="#screenshot" transform="translate(0 -0.277611) scale(0.000578704 0.0014334)"/>
                 </pattern>
                 <clipPath id="clip0_173_52">
                     <rect width="1480" height="700" fill="white"/>
