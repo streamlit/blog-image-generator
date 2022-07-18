@@ -29,9 +29,6 @@ def generate(image):
             </g>
             
             <defs>
-                <pattern id="gradient" patternContentUnits="objectBoundingBox" width="1" height="1">
-                    <use xlink:href="#gradient-image" transform="translate(-0.0605606) scale(0.000437938 0.000925926)"/>
-                </pattern>
                 # Opacity and drop shadow filters for browser window
                 <filter id="filter0_d_173_52" x="8" y="6" width="1460" height="744" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
                     <feFlood flood-opacity="0" result="BackgroundImageFix"/>
@@ -60,7 +57,7 @@ def generate(image):
                     <rect width="1480" height="700" fill="white"/>
                 </clipPath>
                 # Gradient
-                <image id="gradient-image" width="2960" height="1400" xlink:href="data:image/jpeg;charset=utf-8;base64,{gradient}" />
+                <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="0">{gradient}</linearGradient>
                 # Screenshot
                 <image id="screenshot" width="1728" height="1078" xlink:href="data:image/jpeg;charset=utf-8;base64,{image}" />
             </defs>

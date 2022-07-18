@@ -46,10 +46,8 @@ def generate(emojis):
             </g>
 
             <defs>
-                <pattern id="gradient" patternContentUnits="objectBoundingBox" width="1" height="1">
-                    <use xlink:href="#gradient-image" transform="scale(0.000337838 0.000714286)"/>
-                </pattern>
-                <image id="gradient-image" width="2960" height="1400" xlink:href="data:image/jpeg;charset=utf-8;base64,{gradient}" />
+                # Gradient
+                <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="0">{gradient}</linearGradient>
             </defs>
         </svg>
     """.strip()
