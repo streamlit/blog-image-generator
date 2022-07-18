@@ -10,8 +10,8 @@ def generate(images):
     verify_arguments(images)
 
     gradient = generate_gradient()
-    buffered_image1 = resize_image(images[0], 610, 350)
-    buffered_image2 = resize_image(images[1], 610, 350)
+    buffered_image1 = resize_image(images[0], 1730, 1100)
+    buffered_image2 = resize_image(images[1], 1730, 1100)
     image1 = generate_image(buffered_image1.getvalue())
     image2 = generate_image(buffered_image2.getvalue())
 
@@ -117,7 +117,7 @@ def generate(images):
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_305_225" result="shape"/>
                 </filter>
                 <pattern id="pattern1" patternContentUnits="objectBoundingBox" width="1" height="1">
-                    <use xlink:href="#screenshot-1" transform="translate(0 0.0423424) scale(0.000570125 0.000988461)"/>
+                    <use xlink:href="#screenshot-1" transform="translate(-0.01) scale(0.000590125 0.000948461)"/>
                 </pattern>
                 <filter id="filter5_d_305_225" x="300" y="579" width="722" height="498" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
                     <feFlood flood-opacity="0" result="BackgroundImageFix"/>
@@ -140,7 +140,7 @@ def generate(images):
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_305_225" result="shape"/>
                 </filter>
                 <pattern id="pattern2" patternContentUnits="objectBoundingBox" width="1" height="1">
-                    <use xlink:href="#screenshot-2" transform="translate(0.00117931) scale(0.000429933 0.000745712)"/>
+                    <use xlink:href="#screenshot-2" transform="translate(-0.01) scale(0.00059 0.000925712)"/>
                 </pattern>
                 <filter id="filter7_d_305_225" x="1006" y="579" width="722" height="498" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
                     <feFlood flood-opacity="0" result="BackgroundImageFix"/>

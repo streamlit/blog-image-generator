@@ -13,7 +13,7 @@ def generate(image):
     gradient = generate_gradient()
 
     # Get image byte data, resize and generate the base64 encoded version
-    buffered = resize_image(image, 1290, 520)
+    buffered = resize_image(image, 1730, 1100)
     image = generate_image(buffered.getvalue())
 
     return f"""
@@ -57,7 +57,7 @@ def generate(image):
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_173_52" result="shape"/>
                 </filter>
                 <pattern id="pattern1" patternContentUnits="objectBoundingBox" width="1" height="1">
-                    <use xlink:href="#screenshot" transform="translate(0 -0.277611) scale(0.000578704 0.0014334)"/>
+                    <use xlink:href="#screenshot" transform="translate(0 0) scale(0.000578704 0.0014334)"/>
                 </pattern>
                 <clipPath id="clip0_173_52">
                     <rect width="1480" height="700" fill="white"/>

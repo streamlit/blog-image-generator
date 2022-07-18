@@ -54,7 +54,7 @@ def generate(data):
                     <use xlink:href="#screenshot-1" transform="translate(-0.0865269) scale(0.00110353 0.00170068)"/>
                 </pattern>
                 <pattern id="image-2" patternContentUnits="objectBoundingBox" width="1" height="1">
-                    <use xlink:href="#screenshot-2" transform="scale(0.000702247 0.00108225)"/>
+                    <use xlink:href="#screenshot-2" transform="scale(0.000942247 0.0017)" />
                 </pattern>
                 <filter id="filter0_d_306_444" x="453" y="205" width="804" height="602" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
                     <feFlood flood-opacity="0" result="BackgroundImageFix"/>
