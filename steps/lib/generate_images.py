@@ -26,7 +26,7 @@ def generate_gradient():
     ["#1FA2FF", "#12D8FA", "#A6FFCB"],
   ]
 
-  x = random.randint(0,len(gradients))
+  x = random.randint(0,len(gradients) - 1)
   gradient = gradients[x]
   out = []
 
