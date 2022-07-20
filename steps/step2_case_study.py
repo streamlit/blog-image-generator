@@ -1,5 +1,5 @@
 import streamlit as st
-from .lib.generate_images import generate_gradient, generate_image, resize_image
+from .lib.generate_images import generate_gradient, generate_base64_image, resize_image
 
 def render():
     data = [None, []]
@@ -21,9 +21,9 @@ def generate(data):
     buffered_avatar = resize_image(data[0], 90, 90)
     buffered_image1 = resize_image(data[1][0], 1063, 590)
     buffered_image2 = resize_image(data[1][1], 1063, 590)
-    avatar = generate_image(buffered_avatar.getvalue())
-    image1 = generate_image(buffered_image1.getvalue())
-    image2 = generate_image(buffered_image2.getvalue())
+    avatar = generate_base64_image(buffered_avatar.getvalue())
+    image1 = generate_base64_image(buffered_image1.getvalue())
+    image2 = generate_base64_image(buffered_image2.getvalue())
 
     return f"""
         <svg width="100%" viewBox="0 0 1480 700" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

@@ -1,5 +1,5 @@
 import streamlit as st
-from .lib.generate_images import generate_gradient, generate_image, resize_image
+from .lib.generate_images import generate_gradient, generate_base64_image, resize_image
 
 def render():
     image = st.file_uploader("Choose an image", help="Recommended size: 1290x520 pixels")
@@ -14,7 +14,7 @@ def generate(image):
 
     # Get image byte data, resize and generate the base64 encoded version
     buffered = resize_image(image, 1730, 1100)
-    image = generate_image(buffered.getvalue())
+    image = generate_base64_image(buffered.getvalue())
 
     return f"""
         <svg width="100%" viewBox="0 0 1480 700" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

@@ -38,21 +38,40 @@ def generate_gradient():
 
   return outstr
 
-def resize_image(image, w, h):
+def resize_image(image, container_width, container_height):
+  # Image conversion stuff
   img_data = image.read()
   im = Image.open(io.BytesIO(img_data))
   if im.mode in ("RGBA", "P"):
     im = im.convert("RGB")
   
-  im = im.resize((w, h))
+  # Calculations to ensure object-fit: cover; works as expected
+  width  = im.size[0]
+  height = im.size[1]
+  aspect = width / float(height)
+  ideal_aspect = container_width / float(container_height)
 
-  # Store the new image as a JPG
+  # Conditions to check the aspect ratios...
+  if aspect > ideal_aspect:
+      # And crop the left and right edges:
+      new_width = int(ideal_aspect * height)
+      offset = (width - new_width) / 2
+      resize = (offset, 0, width - offset, height)
+  else:
+      # Or crop the top and bottom:
+      new_height = int(width / ideal_aspect)
+      offset = (height - new_height) / 2
+      resize = (0, offset, width, height - offset)
+
+  # Do the actual cropping/resizing
+  thumb = im.crop(resize).resize((container_width, container_height), Image.ANTIALIAS)
+  
+  # And finally store the new image as a JPG
   buffered = io.BytesIO()
-  im.save(buffered, 'jpeg', quality=80)
-
+  thumb.save(buffered, 'jpeg', quality=80)
   return buffered
 
-def generate_image(image):
+def generate_base64_image(image):
   image_string = base64.standard_b64encode(image)
   decoded = image_string.decode('utf-8')
   

@@ -1,5 +1,5 @@
 import streamlit as st
-from .lib.generate_images import generate_gradient, generate_image, resize_image
+from .lib.generate_images import generate_gradient, generate_base64_image, resize_image
 
 def render():
     images = st.file_uploader("Choose images", help="Recommended size for each image: 610x350 pixels", accept_multiple_files=True)
@@ -12,8 +12,8 @@ def generate(images):
     gradient = generate_gradient()
     buffered_image1 = resize_image(images[0], 1063, 590)
     buffered_image2 = resize_image(images[1], 1063, 590)
-    image1 = generate_image(buffered_image1.getvalue())
-    image2 = generate_image(buffered_image2.getvalue())
+    image1 = generate_base64_image(buffered_image1.getvalue())
+    image2 = generate_base64_image(buffered_image2.getvalue())
 
     return f"""
         <svg width="100%" viewBox="0 0 1480 700" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
