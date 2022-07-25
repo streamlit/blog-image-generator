@@ -2,7 +2,16 @@ import streamlit as st
 from .lib.generate_images import generate_gradient, generate_base64_image, resize_image
 
 def render():
-    images = st.file_uploader("Choose images", help="Recommended size for each image: 610x350 pixels", accept_multiple_files=True)
+    images = []
+
+    image1 = st.file_uploader("Choose the first image", help="Recommended size for the image: 610x350 pixels")
+    if image1 is not None:
+        images.append(image1)
+
+    image2 = st.file_uploader("Choose the second image", help="Recommended size for the image: 610x350 pixels")
+    if image2 is not None:
+        images.append(image2)
+
     return [images]
 
 
@@ -10,8 +19,8 @@ def generate(images):
     verify_arguments(images)
 
     gradient = generate_gradient()
-    buffered_image1 = resize_image(images[0], 1730, 1100)
-    buffered_image2 = resize_image(images[1], 1730, 1100)
+    buffered_image1 = resize_image(images[0], 610, 350)
+    buffered_image2 = resize_image(images[1], 610, 350)
     image1 = generate_base64_image(buffered_image1.getvalue())
     image2 = generate_base64_image(buffered_image2.getvalue())
 
@@ -168,4 +177,6 @@ def generate(images):
 def verify_arguments(images):
     MIN_IMAGES = 2
 
-    assert len(images) >= MIN_IMAGES, "Please choose at least two images"
+    if len(images) < MIN_IMAGES:
+        st.error("Please choose at least two images")
+        st.stop()
