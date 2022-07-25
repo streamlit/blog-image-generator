@@ -58,4 +58,6 @@ def verify_arguments(emojis):
 
     MIN_EMOJIS = 4
 
-    assert len(emojis) >= MIN_EMOJIS, "Please add four emojis"
+    if len(emojis) < MIN_EMOJIS: 
+        st.error("Please add four emojis")
+        st.stop()

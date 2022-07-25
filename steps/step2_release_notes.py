@@ -3,7 +3,7 @@ from .lib.generate_images import generate_gradient
 
 def render():
     emoji = st.text_input('Emoji', value='🚀')
-    return emoji
+    return [emoji]
 
 def generate(emoji):
     verify_arguments(emoji)
@@ -38,6 +38,6 @@ def generate(emoji):
 
 
 def verify_arguments(emoji):
-    if(emoji) == '': emoji = '🚀'
-
-    assert emoji != '', "Please add an emoji"
+    if emoji == '':
+        st.error("Please add an emoji")
+        st.stop()
