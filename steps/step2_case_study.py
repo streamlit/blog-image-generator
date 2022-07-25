@@ -2,25 +2,31 @@ import streamlit as st
 from .lib.generate_images import generate_gradient, generate_base64_image, resize_image
 
 def render():
-    data = [None, []]
+    images = []
 
-    avatar = st.file_uploader("User/Company logo", help="This image gets displayed at the top-left hand-corner")
-    if avatar != None: data[0] = avatar
+    avatar = st.file_uploader("User/Company logo", help="Recommended size: 90x90 pixels", key="avatar")
+    if avatar != None:
+        images.append(avatar)
 
-    images = st.file_uploader("Choose images", help="Recommended size: 710x460 pixels", accept_multiple_files=True)
-    if len(images) >= 2: data[1] = images
+    image1 = st.file_uploader("Choose bottom image", help="Recommended size: 710x460 pixels", key="image1")
+    if image1 != None:
+        images.append(image1)
+    
+    image2 = st.file_uploader("Choose front image", help="Recommended size: 710x460 pixels", key="image2")
+    if image2 != None:
+        images.append(image2)
+    
+    return [images]
 
-    return [data]
-
-def generate(data):
-    verify_arguments(data)
+def generate(images):
+    verify_arguments(images)
 
     gradient = generate_gradient()
 
     # Get image byte data, resize and generate the base64 encoded version
-    buffered_avatar = resize_image(data[0], 90, 90)
-    buffered_image1 = resize_image(data[1][0], 1063, 590)
-    buffered_image2 = resize_image(data[1][1], 1063, 590)
+    buffered_avatar = resize_image(images[0], 90, 90)
+    buffered_image1 = resize_image(images[1], 710, 460)
+    buffered_image2 = resize_image(images[2], 710, 460)
     avatar = generate_base64_image(buffered_avatar.getvalue())
     image1 = generate_base64_image(buffered_image1.getvalue())
     image2 = generate_base64_image(buffered_image2.getvalue())
@@ -90,8 +96,9 @@ def generate(data):
     """.strip()
 
 
-def verify_arguments(data):
-    MIN_IMAGES = 2
+def verify_arguments(images):
+    MIN_IMAGES = 3
 
-    assert data[0] != None, "Please add an avatar"
-    assert len(data[1]) >= MIN_IMAGES, "Please choose at least two images"
+    if len(images) < MIN_IMAGES:
+        st.error("Please add at least three images")
+        st.stop()
