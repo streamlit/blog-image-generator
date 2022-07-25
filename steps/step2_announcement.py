@@ -1,8 +1,10 @@
 import streamlit as st
 from .lib.generate_images import generate_gradient, generate_base64_image, resize_image
+from PIL import Image
+import io
 
 def render():
-    image = st.file_uploader("Choose an image", help="Recommended size: 1290x520 pixels")
+    image = st.file_uploader("Choose an image", help="Recommended size: 1300x825 pixels")
     return [image]
 
 
@@ -13,7 +15,7 @@ def generate(image):
     gradient = generate_gradient()
 
     # Get image byte data, resize and generate the base64 encoded version
-    buffered = resize_image(image, 1730, 1100)
+    buffered = resize_image(image, 1300, 825)
     image = generate_base64_image(buffered.getvalue())
 
     return f"""
@@ -71,4 +73,6 @@ def generate(image):
     """.strip()
 
 def verify_arguments(image):
-    assert image != None, "Please choose an image above"
+    if image is None:
+        st.error("Please choose an image above")
+        st.stop()

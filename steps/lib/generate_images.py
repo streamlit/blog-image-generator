@@ -198,6 +198,7 @@ def generate_gradient():
     ["#ef32d9", "#89fffd"],
     ["#3a6186", "#89253e"],
     ["#4ECDC4", "#556270"],
+    # Disco
   ]
 
   x = random.randint(0,len(gradients) - 1)
@@ -224,6 +225,11 @@ def resize_image(image, container_width, container_height):
   height = im.size[1]
   aspect = width / float(height)
   ideal_aspect = container_width / float(container_height)
+
+  # Throw an error if image is too small
+  if(width < container_width):
+    st.error(f'Image is too small! Please add an image that is at least {container_width}px wide.')
+    st.stop()
 
   # Conditions to check the aspect ratios...
   if aspect > ideal_aspect:
