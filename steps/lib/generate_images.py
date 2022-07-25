@@ -228,7 +228,7 @@ def resize_image(image, container_width, container_height):
 
   # Throw an error if image is too small
   if(width < container_width):
-    st.error(f'Image is too small! Please add an image that is at least {container_width}px wide.')
+    st.error(f'Image {image.name} is too small! Please add an image that is at least {container_width}px wide.')
     st.stop()
 
   # Conditions to check the aspect ratios...
