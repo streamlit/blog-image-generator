@@ -29,7 +29,7 @@ def step2(selected_template):
         user_arguments = curr_step.render()
 
         if st.form_submit_button("Generate"):
-            final_image = curr_step.generate(*user_arguments)
-            return final_image
+            final_images = curr_step.generate(*user_arguments)
+            return final_images
 
     return None

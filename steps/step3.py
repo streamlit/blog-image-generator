@@ -3,18 +3,18 @@ import time as time
 import streamlit.components.v1 as components
 
 
-def step3(final_image):
+def step3(final_images):
     st.write('''
     ## Step 3: Download
     ''')
 
-    st.success('Done! Preview and download your image below. Don\'t like the gradient? Hit "Generate" again!')
+    st.success('Done! Here are a couple options for you. Don\'t like the gradients? Hit "Generate" again!')
 
-    components.html(final_image, height=340)
-
-    st.download_button(
-      label="Download image",
-      data=final_image,
-      file_name="image.svg",
-      mime="image/svg+xml"
-    )
+    for i in range(len(final_images)):
+      components.html(final_images[i], height=340)
+      st.download_button(
+        label="Download image",
+        data=final_images[i],
+        file_name="image.svg",
+        mime="image/svg+xml"
+      )
