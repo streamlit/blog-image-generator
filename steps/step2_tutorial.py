@@ -74,7 +74,7 @@ def generate(images):
                         <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_306_419" result="shape"/>
                     </filter>
                     <pattern id="pattern2" patternContentUnits="objectBoundingBox" width="1" height="1">
-                        <use xlink:href="#screenshot-2" transform="translate(0.001460740) scale(0.00092359 0.00170173)" />
+                        <use xlink:href="#screenshot-2" transform="translate(-0.09 -0.004) scale(0.00114359 0.00170173)" />
                     </pattern>
                     <clipPath id="clip0_306_419">
                         <rect width="1480" height="700" fill="white"/>
