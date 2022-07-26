@@ -1,4 +1,5 @@
 import streamlit as st
+import re
 from .lib.generate_images import generate_gradient
 
 def render():
@@ -58,10 +59,42 @@ def generate(emojis):
 
 
 def verify_arguments(emojis):
-    # TODO: Check if the text is actually an emoji
-
+    # Check if we have enough emojis
     MIN_EMOJIS = 4
 
     if len(emojis) < MIN_EMOJIS: 
         st.error("Please add four emojis")
         st.stop()
+    
+    # Check if emojis are actually emojis
+    MATCH_EMOJI = re.compile(
+        "["
+        u"\U0001F600-\U0001F64F"  # emoticons
+        u"\U0001F300-\U0001F5FF"  # symbols & pictographs
+        u"\U0001F680-\U0001F6FF"  # transport & map symbols
+        u"\U0001F1E0-\U0001F1FF"  # flags (iOS)
+        u"\U00002500-\U00002BEF"  # chinese char
+        u"\U00002702-\U000027B0"
+        u"\U00002702-\U000027B0"
+        u"\U000024C2-\U0001F251"
+        u"\U0001f926-\U0001f937"
+        u"\U00010000-\U0010ffff"
+        u"\u2640-\u2642"
+        u"\u2600-\u2B55"
+        u"\u200d"
+        u"\u23cf"
+        u"\u23e9"
+        u"\u231a"
+        u"\ufe0f"  # dingbats
+        u"\u3030"
+        "]+",
+        flags=re.UNICODE,
+    )
+    
+    for i in range(len(emojis)):
+        for x in range(len(emojis[i])):
+            extracted_emoji = MATCH_EMOJI.match(emojis[i][x])
+
+            if extracted_emoji == None:
+                st.error("Hmmm, that doesn't look like a valid emoji. Please try using a different one!")
+                st.stop()
