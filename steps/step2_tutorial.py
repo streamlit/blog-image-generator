@@ -4,14 +4,14 @@ from .lib.generate_images import generate_gradient, generate_base64_image, resiz
 def render():
     images = []
 
+    image2 = st.file_uploader("Choose front image", help="Recommended size: 710x460 pixels", key="image2")
+    if image2 != None:
+        images.append(image2)
+        
     image1 = st.file_uploader("Choose bottom image", help="Recommended size: 710x460 pixels", key="image1")
     if image1 != None:
         images.append(image1)
     
-    image2 = st.file_uploader("Choose front image", help="Recommended size: 710x460 pixels", key="image2")
-    if image2 != None:
-        images.append(image2)
-
     return [images]
 
 
