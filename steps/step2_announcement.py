@@ -25,11 +25,11 @@ def generate(image):
                 # Gradient
                 <rect width="1480" height="700" fill="url(#gradient)"/>
 
+                # Image path
+                <image id="screenshot" x="95" y="180" width="1290" height="520" xlink:href="data:image/jpeg;charset=utf-8;base64,{image}" />
+
                 # White Background
                 <path xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" d="M76 64C69.3726 64 64 69.3726 64 76V700H96V188C96 183.582 99.5817 180 104 180H1376C1380.42 180 1384 183.582 1384 188V700H1416V76C1416 69.3726 1410.63 64 1404 64H76Z" fill="white"/>
-
-                # Image path
-                <path d="M96 188C96 183.582 99.5817 180 104 180H1376C1380.42 180 1384 183.582 1384 188V700H96V188Z" fill="url(#pattern0)"/>
 
                 # Circles
                 <circle cx="106" cy="122" r="10" fill="#FF6C6C"/>
