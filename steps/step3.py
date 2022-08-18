@@ -1,7 +1,7 @@
 import streamlit as st
 import time as time
 import streamlit.components.v1 as components
-# from cairosvg import svg2png
+from cairosvg import svg2png
 
 def step3(final_images):
     st.write('''
@@ -15,7 +15,7 @@ def step3(final_images):
     png_images = []
     for i in range(len(final_images)):
         
-        # png_images.append(svg2png(bytestring=final_images[i],output_width=1480, output_height=700))
+        png_images.append(svg2png(bytestring=final_images[i],output_width=1480, output_height=700))
 
         components.html(f'''
             <body style="margin: 0; padding: 0;">
@@ -33,13 +33,13 @@ def step3(final_images):
                 mime="image/svg+xml"
             )
         
-        # with col2:
-        #     st.download_button(
-        #         label="Download PNG image",
-        #         data=png_images[i],
-        #         file_name="image.png",
-        #         mime="image/png"
-        #     )
+        with col2:
+            st.download_button(
+                label="Download PNG image",
+                data=png_images[i],
+                file_name="image.png",
+                mime="image/png"
+            )
 
         st.write('')
         st.write('')
