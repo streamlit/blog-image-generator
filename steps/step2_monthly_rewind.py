@@ -53,7 +53,7 @@ def generate(emojis, category):
 
                 <defs>
                     # Gradient
-                    <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="0">{gradient}</linearGradient>
+                    <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="0" gradientTransform="rotate(-45)">{gradient}</linearGradient>
                 </defs>
             </svg>
         """.strip())

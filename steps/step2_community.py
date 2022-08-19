@@ -168,7 +168,7 @@ def generate(images):
                         <rect width="1480" height="700" fill="white"/>
                     </clipPath>
                     # Gradient
-                    <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="0">{gradient}</linearGradient>
+                    <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="0" gradientTransform="rotate(-45)">{gradient}</linearGradient>
                     # Screenshot
                     <image id="screenshot-1" width="1728" height="1078" xlink:href="data:image/jpeg;charset=utf-8;base64,{image1}" />
                     <image id="screenshot-2" width="1728" height="1078" xlink:href="data:image/jpeg;charset=utf-8;base64,{image2}" />
