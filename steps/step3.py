@@ -11,7 +11,7 @@ def download_png(image):
     with open('./img/temp/image.png', 'rb') as image:
         img_data = image.read()
         im = Image.open(io.BytesIO(img_data))
-        im.show()
+        im.save('image.png')
 
 def step3(final_images):
     st.write('''

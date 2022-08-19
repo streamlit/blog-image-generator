@@ -1,4 +1,4 @@
 .DS_Store
-img/gradients
+img/temp/*
 __pycache__/
 *.py[cod]
