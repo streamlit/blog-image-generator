@@ -1,4 +1,3 @@
 .DS_Store
-img/temp/*
 __pycache__/
 *.py[cod]

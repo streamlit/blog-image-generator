@@ -2,16 +2,21 @@ import streamlit as st
 import time as time
 import streamlit.components.v1 as components
 from cairosvg import svg2png
-from PIL import Image
-import io
 
 def download_png(image):
-    png_image = svg2png(bytestring=image,output_width=1480, output_height=700, write_to="./img/temp/image.png")
+    png_image = svg2png(bytestring=image,output_width=1480, output_height=700)
 
-    with open('./img/temp/image.png', 'rb') as image:
-        img_data = image.read()
-        im = Image.open(io.BytesIO(img_data))
-        im.save('image.png')
+    st.write('Good choice! The SVG should already be in your downloads folder.')
+
+    st.info('Need the PNG file as well? Download below!')
+
+    st.download_button(
+        label="Download PNG image",
+        data=png_image,
+        file_name="image.png",
+        mime="image/png",
+    )
+    
 
 def step3(final_images):
     st.write('''

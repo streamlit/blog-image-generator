@@ -3,6 +3,7 @@ from slugify import slugify
 from steps.step1 import step1
 from steps.step2 import step2
 from steps.step3 import step3
+from steps.step4 import step4
 
 # Presentational content
 
