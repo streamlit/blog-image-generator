@@ -15,6 +15,7 @@ def download_png(image):
         data=png_image,
         file_name="image.png",
         mime="image/png",
+        key="png_image"
     )
     
 
@@ -41,7 +42,8 @@ def step3(final_images):
             file_name="image.svg",
             mime="image/svg+xml",
             on_click=download_png,
-            args=[final_images[i]]
+            args=[final_images[i]],
+            key=f"final_image_{i}"
         )
 
         st.write('')
