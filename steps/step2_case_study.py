@@ -8,13 +8,13 @@ def render():
     if avatar != None:
         images.append(avatar)
 
-    image2 = st.file_uploader("Choose front image", help="Recommended size: 710x460 pixels", key="image2")
-    if image2 != None:
-        images.append(image2)
-
-    image1 = st.file_uploader("Choose bottom image", help="Recommended size: 710x460 pixels", key="image1")
+    image1 = st.file_uploader("Choose front image", help="Recommended size: 710x460 pixels", key="image2")
     if image1 != None:
         images.append(image1)
+
+    image2 = st.file_uploader("Choose bottom image", help="Recommended size: 710x460 pixels", key="image1")
+    if image2 != None:
+        images.append(image2)
 
     showCategory = st.checkbox('Show category text and icon?')
     
@@ -28,8 +28,8 @@ def generate(images, category):
     buffered_image1 = resize_image(images[1], 710, 460)
     buffered_image2 = resize_image(images[2], 710, 460)
     avatar = generate_base64_image(buffered_avatar.getvalue())
-    image1 = generate_base64_image(buffered_image1.getvalue())
-    image2 = generate_base64_image(buffered_image2.getvalue())
+    bottom_image = generate_base64_image(buffered_image1.getvalue())
+    front_image = generate_base64_image(buffered_image2.getvalue())
     categoryContent = ''
 
     generated_images = []
@@ -99,8 +99,8 @@ def generate(images, category):
                     <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="0" gradientTransform="rotate(-45)">{gradient}</linearGradient>
                     # Images
                     <image id="image-avatar" width="800" height="800" xlink:href="data:image/jpeg;charset=utf-8;base64,{avatar}" />
-                    <image id="screenshot-1" width="1063" height="588" xlink:href="data:image/jpeg;charset=utf-8;base64,{image1}" />
-                    <image id="screenshot-2" width="1063" height="588" xlink:href="data:image/jpeg;charset=utf-8;base64,{image2}" />
+                    <image id="screenshot-1" width="1063" height="588" xlink:href="data:image/jpeg;charset=utf-8;base64,{front_image}" />
+                    <image id="screenshot-2" width="1063" height="588" xlink:href="data:image/jpeg;charset=utf-8;base64,{bottom_image}" />
                 </defs>
             </svg>
         """.strip())
