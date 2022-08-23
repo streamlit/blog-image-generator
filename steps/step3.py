@@ -1,7 +1,11 @@
 import streamlit as st
 import time as time
 import streamlit.components.v1 as components
-#from cairosvg import svg2png
+from cairosvg import svg2png
+
+@st.cache
+def to_png(svg_image):
+    return svg2png(bytestring=svg_image, output_width=1480, output_height=700)
 
 def step3(svg_images):
     st.write('''
@@ -29,7 +33,7 @@ def step3(svg_images):
             )
 
         with col2:
-            png_image = svg2png(bytestring=svg_images[i], output_width=1480, output_height=700)
+            png_image = to_png(svg_images[i])
             st.download_button(
                 label="Download PNG image",
                 data=png_image,
