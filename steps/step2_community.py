@@ -1,5 +1,5 @@
 import streamlit as st
-from .lib.generate_images import generate_gradients, generate_base64_image, resize_image
+from .lib.generate_images import generate_gradients, get_gradient_direction, generate_base64_image, resize_image
 
 def render():
     images = []
@@ -12,10 +12,20 @@ def render():
     if image2 is not None:
         images.append(image2)
 
-    return [images]
+    direction = st.selectbox(
+        'Gradient direction',
+        ['0 degrees (left-to-right)',
+        '45 degrees (diagonal top-left-to-bottom-right)',
+        '90 degrees (top-to-bottom)',
+        '135 degrees (diagonal top-right-to-bottom-left)',
+        '315 degrees (diagonal bottom-left-top-top-right)'
+        ],
+    )
+
+    return [images, direction]
 
 
-def generate(images):
+def generate(images, gradient_direction):
     verify_arguments(images)
 
     buffered_image1 = resize_image(images[0], 610, 350)
@@ -25,6 +35,7 @@ def generate(images):
     
     generated_images = []
     gradients = generate_gradients()
+    coordinates = get_gradient_direction(gradient_direction)
 
     for i in range(len(gradients) - 1):
         
@@ -169,7 +180,7 @@ def generate(images):
                         <rect width="1480" height="700" fill="white"/>
                     </clipPath>
                     # Gradient
-                    <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="0" gradientTransform="rotate(-45)">{gradients[i]}</linearGradient>
+                    <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="0" gradientTransform="rotate({coordinates[0]})">{gradients[i]}</linearGradient>
                     # Screenshot
                     <image id="screenshot-1" width="1728" height="1078" xlink:href="data:image/jpeg;charset=utf-8;base64,{image1}" />
                     <image id="screenshot-2" width="1728" height="1078" xlink:href="data:image/jpeg;charset=utf-8;base64,{image2}" />

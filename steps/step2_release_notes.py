@@ -1,20 +1,31 @@
 import streamlit as st
 import re
-from .lib.generate_images import generate_gradients
+from .lib.generate_images import generate_gradients, get_gradient_direction
 
 def render():
     emoji = st.text_input('Emoji', value='🚀')
 
     showCategory = st.checkbox('Show category text and icon?')
 
-    return [emoji, showCategory]
+    direction = st.selectbox(
+        'Gradient direction',
+        ['0 degrees (left-to-right)',
+        '45 degrees (diagonal top-left-to-bottom-right)',
+        '90 degrees (top-to-bottom)',
+        '135 degrees (diagonal top-right-to-bottom-left)',
+        '315 degrees (diagonal bottom-left-top-top-right)'
+        ],
+    )
 
-def generate(emoji, category):
+    return [emoji, showCategory, direction]
+
+def generate(emoji, category, gradient_direction):
     verify_arguments(emoji)
 
 
     generated_images = []
     gradients = generate_gradients()
+    coordinates = get_gradient_direction(gradient_direction)
 
     for i in range(len(gradients) - 1):
         categoryContent = ''
@@ -35,7 +46,7 @@ def generate(emoji, category):
 
                 <defs>
                     # Gradient
-                    <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="0" gradientTransform="rotate(-45)">{gradients[i]}</linearGradient>
+                    <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="0" gradientTransform="rotate({coordinates[0]})">{gradients[i]}</linearGradient>
                 </defs>
             </svg>
         """.strip())

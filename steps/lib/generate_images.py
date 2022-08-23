@@ -2,6 +2,11 @@ import streamlit as st
 import base64
 from PIL import Image
 import io
+import re
+
+def get_gradient_direction(direction):
+    result = [int(d) for d in re.findall(r'-?\d+', direction)]
+    return result
 
 def generate_gradients():
 

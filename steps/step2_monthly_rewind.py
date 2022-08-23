@@ -1,6 +1,6 @@
 import streamlit as st
 import re
-from .lib.generate_images import generate_gradients
+from .lib.generate_images import generate_gradients, get_gradient_direction
 
 def render():
     col1, col2, col3, col4 = st.columns(4)
@@ -23,14 +23,25 @@ def render():
         emoji4 = st.text_input('Emoji 4', value='🐍')
         if emoji4 != '': emojis.append(emoji4)
 
-    return [emojis, showCategory]
+    direction = st.selectbox(
+        'Gradient direction',
+        ['0 degrees (left-to-right)',
+        '45 degrees (diagonal top-left-to-bottom-right)',
+        '90 degrees (top-to-bottom)',
+        '135 degrees (diagonal top-right-to-bottom-left)',
+        '315 degrees (diagonal bottom-left-top-top-right)'
+        ],
+    )
+
+    return [emojis, showCategory, direction]
 
 
-def generate(emojis, category):
+def generate(emojis, category, gradient_direction):
     verify_arguments(emojis)
 
     generated_images = []
     gradients = generate_gradients()
+    coordinates = get_gradient_direction(gradient_direction)
     
     for i in range(len(gradients) - 1):
         categoryContent = ''
@@ -54,7 +65,7 @@ def generate(emojis, category):
 
                 <defs>
                     # Gradient
-                    <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="0" gradientTransform="rotate(-45)">{gradients[i]}</linearGradient>
+                    <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="0" gradientTransform="rotate({coordinates[0]})">{gradients[i]}</linearGradient>
                 </defs>
             </svg>
         """.strip())
