@@ -11,8 +11,6 @@ def render():
     with col1:
         emoji1 = st.text_input('Emoji 1', value='👻')
         if emoji1 != '': emojis.append(emoji1)
-
-        showCategory = st.checkbox('Show category text and icon?')
     with col2:
         emoji2 = st.text_input('Emoji 2', value='🤖')
         if emoji2 != '': emojis.append(emoji2)
@@ -22,6 +20,8 @@ def render():
     with col4:
         emoji4 = st.text_input('Emoji 4', value='🐍')
         if emoji4 != '': emojis.append(emoji4)
+
+    showCategory = st.checkbox('Show category text and icon?')
 
     direction = st.selectbox(
         'Gradient direction',

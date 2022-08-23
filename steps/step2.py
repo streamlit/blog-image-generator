@@ -11,7 +11,11 @@ STEPS = {
     'Release notes': step2_release_notes,
 }
 
+
 def step2(selected_template):
+    if 'images' not in st.session_state:
+        st.session_state.images = None
+
     st.write('''
     ## Step 2: Add your assets!
 
@@ -31,7 +35,6 @@ def step2(selected_template):
         user_arguments = curr_step.render()
 
         if st.form_submit_button("Generate"):
-            final_images = curr_step.generate(*user_arguments)
-            return final_images
+            st.session_state.images = curr_step.generate(*user_arguments)
 
-    return None
+    return st.session_state.images

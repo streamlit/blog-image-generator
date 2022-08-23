@@ -3,7 +3,7 @@ from slugify import slugify
 
 TEMPLATES = ('Announcement', 'Community', 'Monthly rewind', 'Case study', 'Tutorial', 'Release notes')
 
-def step1():
+def step1(on_template_changed):
     st.write('''
     ## Step 1: Pick a category
 
@@ -17,41 +17,52 @@ def step1():
 
     if 'template_id' not in st.session_state or st.session_state.template_id is None:
         with a:
-            thumbnail(0)
+            thumbnail(0, on_template_changed)
             st.write("")
-            thumbnail(1)
+            thumbnail(1, on_template_changed)
 
         with b:
-            thumbnail(2)
+            thumbnail(2, on_template_changed)
             st.write("")
-            thumbnail(3)
+            thumbnail(3, on_template_changed)
 
         with c:
-            thumbnail(4)
+            thumbnail(4, on_template_changed)
             st.write("")
-            thumbnail(5)
+            thumbnail(5, on_template_changed)
 
     else:
         st.write(f'#### You selected: { TEMPLATES[st.session_state.template_id] }')
         show_image(st.session_state.template_id, large_caption=False)
 
-        st.button('Pick another template', on_click=set_template, args=[None])
+        st.button(
+            'Pick another template',
+            on_click=set_template,
+            args=[None, on_template_changed])
 
         template = TEMPLATES[st.session_state.template_id]
+
         return template
 
 
-def set_template(i):
+def set_template(i, on_template_changed):
     st.session_state.template_id = i
+    on_template_changed()
 
-def thumbnail(i):
+
+def thumbnail(i, on_template_changed):
     show_image(i, large_caption=True)
 
     if 'template_id' in st.session_state and st.session_state.template_id == i:
         st.button('Selected!', disabled=True, key=f"template-{i}")
 
     else:
-        st.button("Select this", key=f"template-{i}", on_click=set_template, args=[i])
+        st.button(
+            "Select this",
+            key=f"template-{i}",
+            on_click=set_template,
+            args=[i, on_template_changed])
+
 
 def show_image(i, large_caption):
     image_name = TEMPLATES[i]
@@ -59,6 +70,6 @@ def show_image(i, large_caption):
     if large_caption:
         st.write(f"**{image_name}**")
 
-    image_url = "%s-%s.%s" %('img/template',slugify(image_name),'jpg')
+    image_url = "%s-%s.%s" % ('img/template', slugify(image_name),'jpg')
 
     st.image(image_url)

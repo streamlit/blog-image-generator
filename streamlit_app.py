@@ -16,7 +16,11 @@ An app to generate good-looking images for [our blog](https://blog.streamlit.io)
 
 '---'
 
-template = step1()
+def reset_images():
+    if 'images' in st.session_state:
+        del st.session_state.images
+
+template = step1(on_template_changed=reset_images)
 
 if not template:
     st.stop()
@@ -24,7 +28,6 @@ if not template:
 '---'
 
 out = step2(template)
-
 
 if not out:
     st.stop()
