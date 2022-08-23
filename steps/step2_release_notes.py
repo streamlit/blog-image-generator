@@ -1,6 +1,6 @@
 import streamlit as st
 import re
-from .lib.generate_images import generate_gradient
+from .lib.generate_images import generate_gradients
 
 def render():
     emoji = st.text_input('Emoji', value='🚀')
@@ -14,8 +14,9 @@ def generate(emoji, category):
 
 
     generated_images = []
-    for i in range(4):
-        gradient = generate_gradient()
+    gradients = generate_gradients()
+
+    for i in range(len(gradients) - 1):
         categoryContent = ''
 
         if category:
@@ -34,7 +35,7 @@ def generate(emoji, category):
 
                 <defs>
                     # Gradient
-                    <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="0" gradientTransform="rotate(-45)">{gradient}</linearGradient>
+                    <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="0" gradientTransform="rotate(-45)">{gradients[i]}</linearGradient>
                 </defs>
             </svg>
         """.strip())

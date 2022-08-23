@@ -22,11 +22,9 @@ def download_png(image):
 def step3(final_images):
     st.write('''
     ## Step 3: Download
-
-    Done! We've generated a few options for you.
     ''')
 
-    st.warning('Don\'t like the gradients below? Hit "Generate" again!')
+    st.info("Done! We've generated some options for you 👇🏻")
 
     for i in range(len(final_images)):
 

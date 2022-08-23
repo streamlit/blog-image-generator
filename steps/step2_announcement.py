@@ -1,5 +1,5 @@
 import streamlit as st
-from .lib.generate_images import generate_gradient, generate_base64_image, resize_image
+from .lib.generate_images import generate_gradients, generate_base64_image, resize_image
 from PIL import Image
 import io
 
@@ -15,10 +15,11 @@ def generate(image):
     buffered = resize_image(image, 1290, 520)
     image = generate_base64_image(buffered.getvalue())
 
-    # Generate four different images
+    # Generate all images
     generated_images = []
-    for i in range(4):
-        gradient = generate_gradient()
+    gradients = generate_gradients()
+
+    for i in range(len(gradients) - 1):
         
         generated_images.append(f"""
             <svg width="100%" height="100%" viewBox="0 0 1480 700" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -45,7 +46,7 @@ def generate(image):
                     </pattern>
 
                     # Gradient
-                    <linearGradient id="gradient" x1="" y1="0" x2="1" y2="0" gradientTransform="rotate(-45)">{gradient}</linearGradient>
+                    <linearGradient id="gradient" x1="" y1="0" x2="1" y2="0" gradientTransform="rotate(-45)">{gradients[i]}</linearGradient>
                 </defs>
             </svg>
         """.strip())

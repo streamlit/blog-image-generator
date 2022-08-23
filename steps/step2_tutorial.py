@@ -1,5 +1,5 @@
 import streamlit as st
-from .lib.generate_images import generate_gradient, generate_base64_image, resize_image
+from .lib.generate_images import generate_gradients, generate_base64_image, resize_image
 
 def render():
     images = []
@@ -26,8 +26,9 @@ def generate(images, category):
     front_image = generate_base64_image(buffered_image2.getvalue())
 
     generated_images = []
-    for i in range(4):
-        gradient = generate_gradient()
+    gradients = generate_gradients()
+
+    for i in range(len(gradients) - 1):
         categoryContent = ''
 
         if category:
@@ -87,7 +88,7 @@ def generate(images, category):
                         <rect width="1480" height="700" fill="white"/>
                     </clipPath>
                     # Gradient
-                    <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="0" gradientTransform="rotate(-45)">{gradient}</linearGradient>
+                    <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="0" gradientTransform="rotate(-45)">{gradients[i]}</linearGradient>
                     # Screenshots
                     <image id="screenshot-1" width="1063" height="588" xlink:href="data:image/jpeg;charset=utf-8;base64,{front_image}" />
                     <image id="screenshot-2" width="1063" height="588" xlink:href="data:image/jpeg;charset=utf-8;base64,{bottom_image}" />

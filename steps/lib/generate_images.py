@@ -1,12 +1,11 @@
 import streamlit as st
 import base64
-import random
 from PIL import Image
 import io
 
-def generate_gradient():
+def generate_gradients():
 
-  # Available gradients
+  # Available HEX combinations
   gradients = [
     ["#00C0F2", "#9BF8FE", "#C0FCD3"],
     ["#FFABAB", "#FFECB0", "#FFFFE1"],
@@ -23,17 +22,21 @@ def generate_gradient():
     ["#60B4FF", "#FFC7C7", "#EBD6FF"],
   ]
 
-  x = random.randint(0,len(gradients) - 1)
-  gradient = gradients[x]
   out = []
+  
+  for i, gradient in enumerate(gradients):
+    gradient = gradients[i]
+    gradient_stops = []
 
-  for i, color in enumerate(gradient):
-    offset = round(i / len(gradient) * 100)
-    out.append(f'<stop stop-color="{color}" offset="{offset}%" />')
+    for index, color in enumerate(gradient):
+      offset = round(index / len(gradient) * 100)
+      gradient_stops.append(f'<stop stop-color="{color}" offset="{offset}%" />')
 
-  outstr = ''.join(out)
+    outstr = ''.join(gradient_stops)
+      
+    out.append(outstr)
 
-  return outstr
+  return out
 
 def resize_image(image, container_width, container_height):
   # Image conversion stuff
