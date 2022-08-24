@@ -5,7 +5,7 @@ from .lib.generate_images import generate_gradients, get_gradient_direction
 def render():
     emoji = st.text_input('Emoji', value='🚀')
 
-    showCategory = st.checkbox('Show category text and icon?')
+    showCategory = st.checkbox('Show category text and icon')
 
     direction = st.selectbox(
         'Gradient direction',
@@ -50,7 +50,7 @@ def generate(emoji, category, gradient_direction):
                 </defs>
             </svg>
         """.strip())
-    
+
     return generated_images
 
 
@@ -84,7 +84,7 @@ def verify_arguments(emoji):
         "]+",
         flags=re.UNICODE,
     )
-    
+
     for i in range(len(emoji)):
         extracted_emoji = MATCH_EMOJI.match(emoji[i])
 

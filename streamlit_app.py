@@ -1,8 +1,8 @@
 import streamlit as st
 from slugify import slugify
-from steps.step1 import step1
-from steps.step2 import step2
-from steps.step3 import step3
+from steps import step1
+from steps import step2
+from steps import step3
 
 # Presentational content
 
@@ -16,22 +16,17 @@ An app to generate good-looking images for [our blog](https://blog.streamlit.io)
 
 '---'
 
-def reset_images():
-    if 'images' in st.session_state:
-        del st.session_state.images
+step1.display_form()
 
-template = step1(on_template_changed=reset_images)
-
-if not template:
+if step1.is_form_complete():
+    ''
+    ''
+    step2.display_form()
+else:
+    step2.reset()
     st.stop()
 
-'---'
-
-out = step2(template)
-
-if not out:
-    st.stop()
-
-'---'
-
-step3(out)
+if step2.is_form_complete():
+    ''
+    ''
+    step3.display_output()

@@ -21,7 +21,7 @@ def render():
 
 def generate(image, gradient_direction):
     verify_arguments(image)
-    
+
     # Get image byte data, resize and generate the base64 encoded version
     buffered = resize_image(image, 1290, 540)
     image = generate_base64_image(buffered.getvalue())
@@ -32,16 +32,16 @@ def generate(image, gradient_direction):
     coordinates = get_gradient_direction(gradient_direction)
 
     for i in range(len(gradients) - 1):
-        
+
         generated_images.append(f"""
             <svg width="100%" height="100%" viewBox="0 0 1480 700" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 
                 # Group
                 <g clip-path="url(#clip0_416_265)">
-                    
+
                     # White background
                     <rect width="1480" height="700" fill="white"/>
-                    
+
                     # Gradient
                     <rect width="1480" height="700" fill="url(#gradient)"/>
 
@@ -65,7 +65,7 @@ def generate(image, gradient_direction):
 
                 # Definitions
                 <defs>
-                    
+
                     # Filters
                     <filter id="filter0_dd_416_265" x="24" y="29" width="1432" height="716" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
                         <feFlood flood-opacity="0" result="BackgroundImageFix"/>

@@ -21,7 +21,7 @@ def render():
         emoji4 = st.text_input('Emoji 4', value='🐍')
         if emoji4 != '': emojis.append(emoji4)
 
-    showCategory = st.checkbox('Show category text and icon?')
+    showCategory = st.checkbox('Show category text and icon')
 
     direction = st.selectbox(
         'Gradient direction',
@@ -42,7 +42,7 @@ def generate(emojis, category, gradient_direction):
     generated_images = []
     gradients = generate_gradients()
     coordinates = get_gradient_direction(gradient_direction)
-    
+
     for i in range(len(gradients) - 1):
         categoryContent = ''
 
@@ -69,7 +69,7 @@ def generate(emojis, category, gradient_direction):
                 </defs>
             </svg>
         """.strip())
-    
+
     return generated_images
 
 
@@ -77,10 +77,10 @@ def verify_arguments(emojis):
     # Check if we have enough emojis
     MIN_EMOJIS = 4
 
-    if len(emojis) < MIN_EMOJIS: 
+    if len(emojis) < MIN_EMOJIS:
         st.error("Please add four emojis")
         st.stop()
-    
+
     # Check if emojis are actually emojis
     MATCH_EMOJI = re.compile(
         "["
@@ -105,7 +105,7 @@ def verify_arguments(emojis):
         "]+",
         flags=re.UNICODE,
     )
-    
+
     for i in range(len(emojis)):
         for x in range(len(emojis[i])):
             extracted_emoji = MATCH_EMOJI.match(emojis[i][x])

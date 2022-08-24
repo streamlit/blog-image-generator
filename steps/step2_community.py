@@ -32,13 +32,13 @@ def generate(images, gradient_direction):
     buffered_image2 = resize_image(images[1], 610, 350)
     image1 = generate_base64_image(buffered_image1.getvalue())
     image2 = generate_base64_image(buffered_image2.getvalue())
-    
+
     generated_images = []
     gradients = generate_gradients()
     coordinates = get_gradient_direction(gradient_direction)
 
     for i in range(len(gradients) - 1):
-        
+
         generated_images.append(f"""
             <svg width="100%" viewBox="0 0 1480 700" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g clip-path="url(#clip0_305_225)">
@@ -187,7 +187,7 @@ def generate(images, gradient_direction):
                 </defs>
             </svg>
         """.strip())
-    
+
     return generated_images
 
 def verify_arguments(images):

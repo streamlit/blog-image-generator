@@ -7,12 +7,12 @@ def render():
     image1 = st.file_uploader("Choose front image", help="Recommended size: 710x460 pixels", key="image2")
     if image1 != None:
         images.append(image1)
-        
+
     image2 = st.file_uploader("Choose bottom image", help="Recommended size: 710x460 pixels", key="image1")
     if image2 != None:
         images.append(image2)
 
-    showCategory = st.checkbox('Show category text and icon?')
+    showCategory = st.checkbox('Show category text and icon')
 
     direction = st.selectbox(
         'Gradient direction',
@@ -23,7 +23,7 @@ def render():
         '315 degrees (diagonal bottom-left-top-top-right)'
         ],
     )
-    
+
     return [images, showCategory, direction]
 
 
@@ -106,7 +106,7 @@ def generate(images, category, gradient_direction):
                 </defs>
             </svg>
         """.strip())
-    
+
     return generated_images
 
 def verify_arguments(images):

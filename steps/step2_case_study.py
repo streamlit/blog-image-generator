@@ -16,7 +16,7 @@ def render():
     if image2 != None:
         images.append(image2)
 
-    showCategory = st.checkbox('Show category text and icon?')
+    showCategory = st.checkbox('Show category text and icon')
 
     direction = st.selectbox(
         'Gradient direction',
@@ -27,7 +27,7 @@ def render():
         '315 degrees (diagonal bottom-left-top-top-right)'
         ],
     )
-    
+
     return [images, showCategory, direction]
 
 def generate(images, category, gradient_direction):
