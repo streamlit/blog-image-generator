@@ -1,11 +1,11 @@
 import streamlit as st
 import time as time
 import streamlit.components.v1 as components
-#from cairosvg import svg2png
+from cairosvg import svg2png
 
 @st.cache
 def to_png(svg_image):
-    return svg_image #svg2png(bytestring=svg_image, output_width=1480, output_height=700)
+    return svg2png(bytestring=svg_image, output_width=1480, output_height=700)
 
 
 def display_output():
