@@ -8,11 +8,11 @@ def render():
     if avatar != None:
         images.append(avatar)
 
-    image1 = st.file_uploader("Choose front image", help="Recommended size: 710x460 pixels", key="image2")
+    image1 = st.file_uploader("Choose front image", help="Recommended size: 1200x780 pixels", key="image2")
     if image1 != None:
         images.append(image1)
 
-    image2 = st.file_uploader("Choose bottom image", help="Recommended size: 710x460 pixels", key="image1")
+    image2 = st.file_uploader("Choose bottom image", help="Recommended size: 1200x780 pixels", key="image1")
     if image2 != None:
         images.append(image2)
 
