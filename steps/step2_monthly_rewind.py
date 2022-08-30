@@ -56,7 +56,7 @@ def generate(emojis, category, gradient_direction):
             """
 
         generated_images.append(f"""
-            <svg width="100%" viewBox="0 0 1480 700" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <svg width="1480" height="700" viewBox="0 0 1480 700" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 # Gradient Background
                 <rect width="100%" height="100%" fill="url(#gradient)"/>
 

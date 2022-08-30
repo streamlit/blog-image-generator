@@ -21,7 +21,7 @@ def display_output():
 
         components.html(f'''
             <body style="margin: 0; padding: 0;">
-                {svg_images[i]}
+                <svg viewBox="0 0 1480 700">{svg_images[i]}</svg>
             </body>
         ''', height=333)
 

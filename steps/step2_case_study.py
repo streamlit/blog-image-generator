@@ -68,7 +68,7 @@ def generate(images, category, gradient_direction):
         """
 
         generated_images.append(f"""
-            <svg width="100%" height="100%" viewBox="0 0 1480 700" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <svg width="1480" height="700" viewBox="0 0 1480 700" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 # Group to hold the background colors 
                 <g clip-path="url(#clip0_418_273)">
                     # White background
