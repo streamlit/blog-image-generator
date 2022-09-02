@@ -81,7 +81,9 @@ def generate(images, category, gradient_direction, color):
                     # Left browser
                     <g filter="url(#filter0_d_418_273)">
                         <g filter="url(#filter1_dd_418_273)">
+                            # Image
                             <rect x="520" y="315" width="100%" height="100%" fill="url(#image-1)"/>
+
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M505 238C498.373 238 493 243.373 493 250V700H527C523.686 700 521 697.314 521 694V320C521 316.686 523.686 314 527 314H1227C1230.31 314 1233 316.686 1233 320V238H505ZM1233 694C1233 697.314 1230.31 700 1227 700H1233V694Z" fill="white"/>
                             <path d="M492.5 700V700.5H493H527V700V699.5C523.962 699.5 521.5 697.038 521.5 694V320C521.5 316.962 523.962 314.5 527 314.5H1227C1230.04 314.5 1232.5 316.962 1232.5 320H1233H1233.5V238V237.5H1233H505C498.096 237.5 492.5 243.096 492.5 250V700ZM1233 700.5H1233.5V700V694H1233H1232.5C1232.5 697.038 1230.04 699.5 1227 699.5V700V700.5H1233Z" stroke="#FAFAFA"/>
                         </g>
@@ -93,7 +95,9 @@ def generate(images, category, gradient_direction, color):
                     # Right browser
                     <g filter="url(#filter2_d_418_273)">
                         <g filter="url(#filter3_dd_418_273)">
-                            <path d="M768 246C768 241.582 771.582 238 776 238H1480V700H768V246Z" fill="url(#image-2)"/>
+                            # Image
+                            <rect xmlns="http://www.w3.org/2000/svg" x="765" y="239" width="718" height="461" rx="6" fill="url(#image-2)"/>
+
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M752 162C745.373 162 740 167.373 740 174V700H768V246C768 241.582 771.582 238 776 238H1480V162H752Z" fill="white"/>
                             <path d="M739.5 700V700.5H740H768H768.5V700V246C768.5 241.858 771.858 238.5 776 238.5H1480H1480.5V238V162V161.5H1480H752C745.096 161.5 739.5 167.096 739.5 174V700Z" stroke="#FAFAFA"/>
                         </g>

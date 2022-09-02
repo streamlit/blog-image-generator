@@ -74,7 +74,8 @@ def generate(images, category, gradient_direction, color):
                     # Left browser
                     <g filter="url(#filter0_d_429_305)">
                         <g filter="url(#filter1_dd_429_305)">
-                            <path d="M959 325C959 320.582 955.418 317 951 317H247V779H959V325Z" fill="url(#pattern1)"/>
+                            <rect xmlns="http://www.w3.org/2000/svg" x="260" y="310" width="698" height="390" rx="6" fill="url(#pattern1)"/>
+
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M975 238C981.627 238 987 243.373 987 250V700H953C956.314 700 959 697.314 959 694V320C959 316.686 956.314 314 953 314H253C249.686 314 247 316.686 247 320V238H975ZM247 694C247 697.314 249.686 700 253 700H247V694Z" fill="white"/>
                             <path d="M987.5 700V700.5H987H953V700V699.5C956.038 699.5 958.5 697.038 958.5 694V320C958.5 316.962 956.038 314.5 953 314.5H253C249.962 314.5 247.5 316.962 247.5 320H247H246.5V238V237.5H247H975C981.904 237.5 987.5 243.096 987.5 250V700ZM247 700.5H246.5V700V694H247H247.5C247.5 697.038 249.962 699.5 253 699.5V700V700.5H247Z" stroke="#FAFAFA"/>
                         </g>
@@ -86,7 +87,8 @@ def generate(images, category, gradient_direction, color):
                     # Right browser
                     <g filter="url(#filter2_d_429_305)">
                         <g filter="url(#filter3_dd_429_305)">
-                            <path d="M712 246C712 241.582 708.418 238 704 238H0V700H712V246Z" fill="url(#pattern2)"/>
+                            <rect xmlns="http://www.w3.org/2000/svg" x="0" y="239" width="711" height="462" rx="6" fill="url(#pattern2)"/>
+                            
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M728 162C734.627 162 740 167.373 740 174V700H712V246C712 241.582 708.418 238 704 238H0V162H728Z" fill="white"/>
                             <path d="M740.5 700V700.5H740H712H711.5V700V246C711.5 241.858 708.142 238.5 704 238.5H0H-0.5V238V162V161.5H0H728C734.904 161.5 740.5 167.096 740.5 174V700Z" stroke="#FAFAFA"/>
                         </g>

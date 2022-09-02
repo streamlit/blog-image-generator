@@ -45,11 +45,11 @@ def generate(image, gradient_direction):
                     # Gradient
                     <rect width="1480" height="700" fill="url(#gradient)"/>
 
-                    # Image path
-                    <image id="screenshot" x="95" y="160" width="1290" height="540" xlink:href="data:image/jpeg;charset=utf-8;base64,{image}" />
-
                     # Browser styles
                     <g filter="url(#filter0_dd_416_265)">
+                        # Path to image
+                        <image id="screenshot" x="95" y="160" width="1290" height="540" xlink:href="data:image/jpeg;charset=utf-8;base64,{image}" />
+
                         # Background
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M76 64C69.3726 64 64 69.3726 64 76V701H1416V76C1416 69.3726 1410.63 64 1404 64H76ZM104 162C99.5817 162 96 165.582 96 170V701H1384V170C1384 165.582 1380.42 162 1376 162H104Z" fill="white"/>
 
