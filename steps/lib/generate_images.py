@@ -5,8 +5,18 @@ import io
 import re
 
 def get_gradient_direction(direction):
-    result = [int(d) for d in re.findall(r'-?\d+', direction)]
-    return result
+    rotation = [int(d) for d in re.findall(r'-?\d+', direction)]
+    coordinates = []
+    # Vertical gradients are created when x1 and x2 are equal and y1 and y2 different.
+    if rotation[0] == 90 or rotation[0] == 270:
+      coordinates = [0, 0, 1, 0]
+    # Angular gradients are created when x1 and x2 differ and y1 and y2 are different.
+    elif rotation[0] == 45 or rotation[0] == 135 or rotation[0] == 225 or rotation[0] == 315:
+      coordinates = [0, 1, 1, 0]
+    # Horizontal gradients are created when y1 and y2 are equal and x1 and x2 different.
+    else:
+      coordinates = [1, 0, 0, 0]
+    return coordinates
 
 def generate_gradients():
 

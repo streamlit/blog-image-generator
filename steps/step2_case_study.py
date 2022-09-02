@@ -18,11 +18,14 @@ def render():
 
     direction = st.selectbox(
         'Gradient direction',
-        ['0 degrees (left-to-right)',
-        '45 degrees (diagonal top-left-to-bottom-right)',
-        '90 degrees (top-to-bottom)',
-        '135 degrees (diagonal top-right-to-bottom-left)',
-        '315 degrees (diagonal bottom-left-top-top-right)'
+        ['0 degrees',
+        '45 degrees',
+        '90 degrees',
+        '135 degrees',
+        '180 degrees',
+        '225 degrees',
+        '270 degrees',
+        '315 degrees'
         ],
     )
 
@@ -181,7 +184,7 @@ def generate(images, category, gradient_direction, color):
                     </clipPath>
 
                     # Gradient
-                    <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="0" gradientTransform="rotate({coordinates[0]})">{gradients[i]}</linearGradient>
+                    <linearGradient id="gradient" x1="{coordinates[0]}" y1="{coordinates[1]}" x2="{coordinates[2]}" y2="{coordinates[3]}">{gradients[i]}</linearGradient>
                 </defs>
             </svg>
         """.strip())
