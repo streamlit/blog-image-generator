@@ -1,10 +1,11 @@
 import streamlit as st
-from . import step2_announcement, step2_community, step2_monthly_rewind, step2_case_study, step2_tutorial, step2_release_notes
+from . import step2_announcement, step2_community, step2_community_two, step2_monthly_rewind, step2_case_study, step2_tutorial, step2_release_notes
 
 
 TEMPLATE_TYPES = {
     'Announcement': step2_announcement,
     'Community': step2_community,
+    'Community Option 2': step2_community_two,
     'Monthly rewind': step2_monthly_rewind,
     'Case study': step2_case_study,
     'Tutorial': step2_tutorial,
