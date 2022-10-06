@@ -185,7 +185,6 @@ def generate(images, gradient_direction):
                         <feComposite in2="hardAlpha" operator="out"/>
                         <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0.258824 0 0 0 0 0.501961 0 0 0 0.05 0"/>
                         <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_429_334"/>
-                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                         <feOffset dy="5"/>
                         <feGaussianBlur stdDeviation="20"/>
                         <feComposite in2="hardAlpha" operator="out"/>
@@ -211,7 +210,6 @@ def generate(images, gradient_direction):
                         <feComposite in2="hardAlpha" operator="out"/>
                         <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0.258824 0 0 0 0 0.501961 0 0 0 0.05 0"/>
                         <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_429_334"/>
-                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                         <feOffset dy="5"/>
                         <feGaussianBlur stdDeviation="20"/>
                         <feComposite in2="hardAlpha" operator="out"/>
