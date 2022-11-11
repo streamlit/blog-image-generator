@@ -1,16 +1,27 @@
-# blog-image-generator
+# Streamlit Blog Image Generator
 
-A Streamlit app to generate images for our blog.
+A Streamlit app to generate images for the [Streamlit blog](https://blog.streamlit.io).
 
+&nbsp;
 
-# Installation
+## Try it out online
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://image-generator.streamlit.app)
+
+&nbsp;
+
+## Try it out locally
+
+#### Installation
 
 ```sh
 pip install -r requirements.txt
 ```
 
-# Usage
+#### Usage
 
 ```python
 streamlit run streamlit_app.py
 ```
+
+🎈🎈🎈
