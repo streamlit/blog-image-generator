@@ -13,7 +13,6 @@
 # limitations under the License.
 
 import streamlit as st
-from slugify import slugify
 
 TEMPLATES = ('Announcement', 'Community', 'Monthly rewind', 'Case study', 'Tutorial', 'Release notes')
 
@@ -84,6 +83,12 @@ def show_image(i, large_caption):
     if large_caption:
         st.write(f"**{image_name}**")
 
-    image_url = "%s-%s.%s" % ('img/template', slugify(image_name),'jpg')
+    image_url = "%s-%s.%s" % ('img/template', clean_name(image_name),'jpg')
 
     st.image(image_url)
+
+
+def clean_name(name):
+    name = name.lower()
+    name = name.replace(' ', '-')
+    return name

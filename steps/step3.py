@@ -15,7 +15,12 @@
 import streamlit as st
 import time as time
 import streamlit.components.v1 as components
-from cairosvg import svg2png
+
+try:
+    from cairosvg import svg2png
+    able_to_export_png = True
+except:
+    able_to_export_png = False
 
 @st.cache
 def to_png(svg_image):
@@ -47,13 +52,14 @@ def step3(svg_images):
             )
 
         with col2:
-            png_image = to_png(svg_images[i])
-            st.download_button(
-                label="Download PNG image",
-                data=png_image,
-                file_name="image.png",
-                mime="image/png"
-            )
+            if able_to_export_png:
+                png_image = to_png(svg_images[i])
+                st.download_button(
+                    label="Download PNG image",
+                    data=png_image,
+                    file_name="image.png",
+                    mime="image/png"
+                )
 
         st.write('')
         st.write('')
