@@ -22,11 +22,14 @@ def render():
 
     direction = st.selectbox(
         'Gradient direction',
-        ['0 degrees (left-to-right)',
-        '45 degrees (diagonal top-left-to-bottom-right)',
-        '90 degrees (top-to-bottom)',
-        '135 degrees (diagonal top-right-to-bottom-left)',
-        '315 degrees (diagonal bottom-left-top-top-right)'
+        ['0 degrees',
+        '45 degrees',
+        '90 degrees',
+        '135 degrees',
+        '180 degrees',
+        '225 degrees',
+        '270 degrees',
+        '315 degrees'
         ],
     )
 
@@ -35,7 +38,7 @@ def render():
 
 def generate(image, gradient_direction):
     verify_arguments(image)
-    
+
     # Get image byte data, resize and generate the base64 encoded version
     buffered = resize_image(image, 1290, 540)
     image = generate_base64_image(buffered.getvalue())
@@ -46,24 +49,24 @@ def generate(image, gradient_direction):
     coordinates = get_gradient_direction(gradient_direction)
 
     for i in range(len(gradients) - 1):
-        
+
         generated_images.append(f"""
-            <svg width="100%" height="100%" viewBox="0 0 1480 700" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <svg width="1480" height="700" viewBox="0 0 1480 700" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 
                 # Group
                 <g clip-path="url(#clip0_416_265)">
-                    
+
                     # White background
                     <rect width="1480" height="700" fill="white"/>
-                    
+
                     # Gradient
                     <rect width="1480" height="700" fill="url(#gradient)"/>
 
-                    # Image path
-                    <image id="screenshot" x="95" y="160" width="1290" height="540" xlink:href="data:image/jpeg;charset=utf-8;base64,{image}" />
-
                     # Browser styles
                     <g filter="url(#filter0_dd_416_265)">
+                        # Path to image
+                        <image id="screenshot" x="95" y="160" width="1290" height="540" xlink:href="data:image/jpeg;charset=utf-8;base64,{image}" />
+
                         # Background
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M76 64C69.3726 64 64 69.3726 64 76V701H1416V76C1416 69.3726 1410.63 64 1404 64H76ZM104 162C99.5817 162 96 165.582 96 170V701H1384V170C1384 165.582 1380.42 162 1376 162H104Z" fill="white"/>
 
@@ -79,7 +82,7 @@ def generate(image, gradient_direction):
 
                 # Definitions
                 <defs>
-                    
+
                     # Filters
                     <filter id="filter0_dd_416_265" x="24" y="29" width="1432" height="716" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
                         <feFlood flood-opacity="0" result="BackgroundImageFix"/>
@@ -104,7 +107,7 @@ def generate(image, gradient_direction):
                     </pattern>
 
                     # Gradient
-                    <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="0" gradientTransform="rotate({coordinates[0]})">{gradients[i]}</linearGradient>
+                    <linearGradient id="gradient" x1="{coordinates[0]}" y1="{coordinates[1]}" x2="{coordinates[2]}" y2="{coordinates[3]}">{gradients[i]}</linearGradient>
 
                     # Browser clip path
                     <clipPath id="clip0_416_265">

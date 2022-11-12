@@ -13,10 +13,9 @@
 # limitations under the License.
 
 import streamlit as st
+from .step2 import TEMPLATE_TYPES
 
-TEMPLATES = ('Announcement', 'Community', 'Monthly rewind', 'Case study', 'Tutorial', 'Release notes')
-
-def step1(on_template_changed):
+def display_form():
     st.write('''
     ## Step 1: Pick a category
 
@@ -26,65 +25,52 @@ def step1(on_template_changed):
     # Pick type of template
     EMPTY = 'Pick an option!'
 
-    a, b, c = st.columns(3)
+    cols = st.columns(3)
 
-    if 'template_id' not in st.session_state or st.session_state.template_id is None:
-        with a:
-            thumbnail(0, on_template_changed)
-            st.write("")
-            thumbnail(1, on_template_changed)
-
-        with b:
-            thumbnail(2, on_template_changed)
-            st.write("")
-            thumbnail(3, on_template_changed)
-
-        with c:
-            thumbnail(4, on_template_changed)
-            st.write("")
-            thumbnail(5, on_template_changed)
+    if 'template_name' not in st.session_state:
+        for i, template_name in enumerate(TEMPLATE_TYPES.keys()):
+            with cols[i % len(cols)]:
+                display_thumbnail(template_name)
 
     else:
-        st.write(f'#### You selected: { TEMPLATES[st.session_state.template_id] }')
-        show_image(st.session_state.template_id, large_caption=False)
+        st.write(f'#### You selected: { st.session_state.template_name }')
+        display_image(st.session_state.template_name)
 
         st.button(
             'Pick another template',
-            on_click=set_template,
-            args=[None, on_template_changed])
-
-        template = TEMPLATES[st.session_state.template_id]
-
-        return template
+            on_click=reset)
 
 
-def set_template(i, on_template_changed):
-    st.session_state.template_id = i
-    on_template_changed()
+def is_form_complete():
+    return 'template_name' in st.session_state
 
 
-def thumbnail(i, on_template_changed):
-    show_image(i, large_caption=True)
-
-    if 'template_id' in st.session_state and st.session_state.template_id == i:
-        st.button('Selected!', disabled=True, key=f"template-{i}")
-
-    else:
-        st.button(
-            "Select this",
-            key=f"template-{i}",
-            on_click=set_template,
-            args=[i, on_template_changed])
+def reset():
+    if 'template_name' in st.session_state:
+        del st.session_state.template_name
 
 
-def show_image(i, large_caption):
-    image_name = TEMPLATES[i]
+def set_template(template_name):
+    st.session_state.template_name = template_name
 
-    if large_caption:
-        st.write(f"**{image_name}**")
 
-    image_url = "%s-%s.%s" % ('img/template', clean_name(image_name),'jpg')
+def display_thumbnail(template_name):
+    st.write(f"**{template_name}**")
 
+    display_image(template_name)
+
+    st.button(
+        "Select this",
+        key=f"template-{template_name}",
+        on_click=set_template,
+        args=[template_name])
+
+    st.write("")
+    st.write("")
+
+
+def display_image(template_name):
+    image_url = "%s-%s.%s" % ('img/template', clean_name(template_name),'jpg')
     st.image(image_url)
 
 
