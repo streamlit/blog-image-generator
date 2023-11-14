@@ -108,7 +108,7 @@ def resize_image(image, container_width, container_height):
       resize = (0, offset, width, height - offset)
 
   # Do the actual cropping/resizing
-  thumb = im.crop(resize).resize((container_width, container_height), Image.ANTIALIAS)
+  thumb = im.crop(resize).resize((container_width, container_height), Image.Resampling.LANCZOS)
   
   # And finally store the new image as a JPG
   buffered = io.BytesIO()
