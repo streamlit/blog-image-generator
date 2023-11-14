@@ -1,2 +1,3 @@
 streamlit
 htbuilder
+PIL==9.5.0
