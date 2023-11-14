@@ -40,7 +40,7 @@ def display_output():
             data=svg_images[i],
             file_name=f'''{st.session_state.template_name}.svg''',
             mime="image/svg+xml",
-            key= f'key_{str(random.randint(0, 100)}'
+            key= f"key_{str(random.randint(0, 100))}"
         )
 
         st.write('')
