@@ -14,6 +14,7 @@
 
 import streamlit as st
 import time as time
+import random
 import streamlit.components.v1 as components
 
 
@@ -38,7 +39,8 @@ def display_output():
             label="Download SVG image",
             data=svg_images[i],
             file_name=f'''{st.session_state.template_name}.svg''',
-            mime="image/svg+xml"
+            mime="image/svg+xml",
+            key= f'key_{str(random.randint(0, 100)}'
         )
 
         st.write('')
