@@ -1,3 +1,4 @@
 streamlit
 htbuilder
 Pillow==9.5.0
+cairosvg
